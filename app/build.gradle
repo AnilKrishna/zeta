@@ -22,7 +22,7 @@ android {
 
     splits {
         abi {
-            enable true //project.hasProperty('splitApks')
+            enable false //project.hasProperty('splitApks')
             reset()
             include 'x86', 'armeabi', 'armeabi-v7a', 'mips'
             universalApk = true
@@ -132,9 +132,11 @@ dependencies {
     //SUPPORT LIBS
     compile libraries.supportV13
     compile libraries.supportDesign
-    compile libraries.supportMultiDex
     compile libraries.supportAppCompat
     compile libraries.supportRecyclerView
+
+    //Chrome
+    compile libraries.chromeCustomTab
 
     compile libraries.eventBus
     compile libraries.butterKnife

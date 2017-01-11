@@ -1,13 +1,17 @@
 package zeta.android.apps.ui.fragment.products.presentation;
 
+import android.support.annotation.MenuRes;
 import android.support.annotation.StringRes;
+import android.view.Menu;
+import android.view.MenuInflater;
 
 import java.net.URL;
-import java.util.List;
-
-import zeta.android.myntra.models.products.ProductGist;
 
 public interface ProductsPresentation {
+
+    void inflateMenu(Menu menu, MenuInflater inflater, @MenuRes int menuResId);
+
+    void showActionBarText(String actionBarTitle);
 
     void showProgressBar(boolean show);
 
@@ -22,5 +26,9 @@ public interface ProductsPresentation {
     void showProductDescription(String description);
 
     void showSnackBarMessage(@StringRes int message);
+
+    void navigateToCartPage();
+
+    void navigateToSearchPage();
 
 }

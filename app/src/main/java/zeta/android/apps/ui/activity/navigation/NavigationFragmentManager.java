@@ -11,8 +11,11 @@ import android.support.v4.widget.DrawerLayout;
 import android.transition.Transition;
 import android.view.View;
 
+import javax.annotation.ParametersAreNonnullByDefault;
+
 import zeta.android.apps.R;
 
+@ParametersAreNonnullByDefault
 public class NavigationFragmentManager {
 
     @Nullable

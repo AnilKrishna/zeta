@@ -14,7 +14,7 @@ ext.versions = [
         eventBusVersion                   : "3.0.0",
 
         javaxAnnotationApiVersion         : "1.2",
-        jsr305Version                     : "jsr305:2.0.1",
+        jsr305Version                     : "2.0.1",
 
         ormliteVersion                    : "4.48",
         prettyTimeVersion                 : "3.2.7.Final",
@@ -85,6 +85,10 @@ ext.libraries = [
         supportAnnotations         : "com.android.support:support-annotations:$versions.supportLibVersion",
         //endregion
 
+        //custom tabs
+        chromeCustomTab            : "com.android.support:customtabs:$versions.supportLibVersion",
+        //endregion
+
         //region play services
         playServicesGcm            : "com.google.android.gms:play-services-gcm:$versions.playServicesVersion",
         playServicesAd             : "com.google.android.gms:play-services-ads:$versions.playServicesVersion",
@@ -143,7 +147,7 @@ ext.libraries = [
         //endregion
 
         //region ANNOTATION
-        jsr305                     : "com.google.code.findbugs:$versions.jsr305Version",
+        jsr305                     : "com.google.code.findbugs:jsr305:$versions.jsr305Version",
         javaxAnnotationApi         : "javax.annotation:javax.annotation-api:$versions.javaxAnnotationApiVersion",
         //endregion
 

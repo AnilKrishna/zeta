@@ -3,6 +3,7 @@ package zeta.android.apps.ui.activity;
 import android.app.ActivityManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
@@ -18,6 +19,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import javax.annotation.ParametersAreNonnullByDefault;
 import javax.inject.Inject;
 
 import butterknife.BindView;
@@ -25,12 +27,12 @@ import zeta.android.apps.R;
 import zeta.android.apps.ZetaApplication;
 import zeta.android.apps.di.component.ZetaAppComponent;
 import zeta.android.apps.presenter.NavigationPresenter;
-import zeta.android.apps.ui.activity.navigation.NavigationFragmentManager;
 import zeta.android.apps.ui.common.BaseViews;
 import zeta.android.apps.ui.fragment.DebugFragment;
 import zeta.android.apps.ui.fragment.search.SearchResultFragment;
 import zeta.android.apps.ui.presentation.NavigationPresentation;
 
+@ParametersAreNonnullByDefault
 public class NavigationActivity extends BaseNavigationActivity implements NavigationPresentation {
 
     private Views mViews;
@@ -77,7 +79,7 @@ public class NavigationActivity extends BaseNavigationActivity implements Naviga
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         setTheme(R.style.AppTheme);
         configureTaskDescription();
         super.onCreate(savedInstanceState);
@@ -171,31 +173,7 @@ public class NavigationActivity extends BaseNavigationActivity implements Naviga
         return true;
     }
 
-    @Override
-    public NavigationFragmentManager getNavigationFragmentManager() {
-        return mNavigationFragmentManager;
-    }
-
-    //region INavigationFragmentManager
-
-    /**
-     * Since the primary color is indigo_700 and
-     * we want the overview TopBar color to be different and we override it to be white
-     * Note: This can be removed if the app icon contrasts with primaryColor or we change
-     * primaryColor to be different
-     */
-    private void configureTaskDescription() {
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-            int topBarColor = ContextCompat.getColor(this, R.color.zeta_white);
-            ActivityManager.TaskDescription taskDescription =
-                    new ActivityManager.TaskDescription(null, null, topBarColor);
-            setTaskDescription(taskDescription);
-        }
-    }
-    //endregion
-
     //region NavigationPresentation
-
     @Override
     public void showDebugMenuItem(boolean show) {
         final Menu menu = mViews.navigationView.getMenu();
@@ -213,5 +191,20 @@ public class NavigationActivity extends BaseNavigationActivity implements Naviga
     }
 
     //endregion
+
+    /**
+     * Since the primary color is indigo_700 and
+     * we want the overview TopBar color to be different and we override it to be white
+     * Note: This can be removed if the app icon contrasts with primaryColor or we change
+     * primaryColor to be different
+     */
+    private void configureTaskDescription() {
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+            int topBarColor = ContextCompat.getColor(this, R.color.zeta_white);
+            ActivityManager.TaskDescription taskDescription =
+                    new ActivityManager.TaskDescription(null, null, topBarColor);
+            setTaskDescription(taskDescription);
+        }
+    }
 
 }

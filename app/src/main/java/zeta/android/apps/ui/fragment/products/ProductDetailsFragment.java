@@ -1,11 +1,21 @@
 package zeta.android.apps.ui.fragment.products;
 
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.support.annotation.MenuRes;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
+import android.support.customtabs.CustomTabsIntent;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -24,6 +34,9 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import zeta.android.apps.R;
 import zeta.android.apps.di.component.ZetaAppComponent;
+import zeta.android.apps.receiver.ActionBroadcastReceiver;
+import zeta.android.apps.ui.activity.helpers.CustomTabActivityHelper;
+import zeta.android.apps.ui.activity.helpers.WebViewFallback;
 import zeta.android.apps.ui.common.BaseViews;
 import zeta.android.apps.ui.fragment.common.BaseNavigationFragment;
 import zeta.android.apps.ui.fragment.products.presentation.ProductsPresentation;
@@ -109,6 +122,23 @@ public class ProductDetailsFragment extends BaseNavigationFragment implements Pr
     }
 
     @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        mPresenter.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public void onPrepareOptionsMenu(Menu menu) {
+        super.onPrepareOptionsMenu(menu);
+        mPresenter.onPrepareOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return mPresenter.onOptionsItemSelected(item) || super.onOptionsItemSelected(item);
+    }
+
+    @Override
     public void onSaveInstanceState(Bundle outState) {
         outState.putParcelable(ARG_HOME_SAVED_STATE_PRESENTER, mPresenter.getSavedState());
         super.onSaveInstanceState(outState);
@@ -128,6 +158,16 @@ public class ProductDetailsFragment extends BaseNavigationFragment implements Pr
         super.onDestroy();
         mPresenter.onDestroy();
         mPresenter = null;
+    }
+
+    @Override
+    public void inflateMenu(Menu menu, MenuInflater inflater, @MenuRes int menuResId) {
+        inflater.inflate(menuResId, menu);
+    }
+
+    @Override
+    public void showActionBarText(String actionBarTitle) {
+        //setActionBarTitle(actionBarTitle);
     }
 
     @Override
@@ -170,6 +210,16 @@ public class ProductDetailsFragment extends BaseNavigationFragment implements Pr
         Snackbar.make(mViews.getRootView(), getString(message), Snackbar.LENGTH_LONG).show();
     }
 
+    @Override
+    public void navigateToCartPage() {
+        openCustomTab("https://secure.myntra.com/checkout/cart", "");
+    }
+
+    @Override
+    public void navigateToSearchPage() {
+
+    }
+
     //region internal helper methods
     private void registerClickListeners() {
 
@@ -189,6 +239,29 @@ public class ProductDetailsFragment extends BaseNavigationFragment implements Pr
                 .setProductId(productDetailsParams.getProductId())
                 .setSavedState(mSavedState)
                 .build();
+    }
+
+    private void openCustomTab(String url, @Nullable String title) {
+        Context context = getContext();
+        CustomTabsIntent.Builder intentBuilder = new CustomTabsIntent.Builder();
+        intentBuilder.setToolbarColor(ContextCompat.getColor(context, R.color.zeta_md_indigo_700));
+        intentBuilder.setSecondaryToolbarColor(ContextCompat.getColor(context, R.color.zeta_md_indigo_500));
+        if (title != null) {
+            PendingIntent menuItemPendingIntent = createPendingIntent(ActionBroadcastReceiver.ACTION_MENU_ITEM);
+            intentBuilder.addMenuItem(title, menuItemPendingIntent);
+            intentBuilder.setShowTitle(true);
+        }
+        intentBuilder.addDefaultShareMenuItem();
+        intentBuilder.enableUrlBarHiding();
+        intentBuilder.setStartAnimations(context, R.anim.slide_in_right, R.anim.slide_out_right);
+        intentBuilder.setExitAnimations(context, R.anim.slide_in_left, R.anim.slide_out_right);
+        CustomTabActivityHelper.openCustomTab(getActivity(), intentBuilder.build(), Uri.parse(url), new WebViewFallback());
+    }
+
+    private PendingIntent createPendingIntent(int actionSourceId) {
+        Intent actionIntent = new Intent(getContext(), ActionBroadcastReceiver.class);
+        actionIntent.putExtra(ActionBroadcastReceiver.KEY_ACTION_SOURCE, actionSourceId);
+        return PendingIntent.getBroadcast(getContext(), actionSourceId, actionIntent, 0);
     }
     //endregion
 }

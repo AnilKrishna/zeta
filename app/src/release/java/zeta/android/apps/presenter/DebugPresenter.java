@@ -2,11 +2,12 @@ package zeta.android.apps.presenter;
 
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 
-import zeta.android.apps.ui.presentation.DebugPresentation;
 import zeta.android.apps.rx.providers.RxSchedulerProvider;
+import zeta.android.apps.ui.presentation.DebugPresentation;
 
 @ParametersAreNonnullByDefault
 public class DebugPresenter extends ZetaRxFragmentLifeCyclePresenter<DebugPresentation> {
@@ -18,6 +19,16 @@ public class DebugPresenter extends ZetaRxFragmentLifeCyclePresenter<DebugPresen
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 
+    }
+
+    @Override
+    public void onPrepareOptionsMenu(Menu menu) {
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return false;
     }
 
     @Override

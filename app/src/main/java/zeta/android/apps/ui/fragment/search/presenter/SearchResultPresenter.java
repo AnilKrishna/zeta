@@ -4,6 +4,7 @@ import android.os.Parcelable;
 import android.support.annotation.Nullable;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 
 import com.google.auto.value.AutoValue;
 
@@ -51,6 +52,16 @@ public class SearchResultPresenter extends ZetaRxFragmentLifeCyclePresenter<Sear
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         //no op
+    }
+
+    @Override
+    public void onPrepareOptionsMenu(Menu menu) {
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return false;
     }
 
     public void onCreate(SearchPresenterParam presenterParam) {

@@ -2,6 +2,7 @@ package zeta.android.apps.presenter;
 
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 
 import com.github.pedrovgs.lynx.LynxConfig;
 
@@ -34,6 +35,16 @@ public class DebugPresenter extends ZetaRxFragmentLifeCyclePresenter<DebugPresen
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         //todo::
+    }
+
+    @Override
+    public void onPrepareOptionsMenu(Menu menu) {
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return false;
     }
 
     @Override

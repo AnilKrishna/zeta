@@ -4,6 +4,7 @@ import android.os.Parcelable;
 import android.support.annotation.Nullable;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 
 import com.google.auto.value.AutoValue;
 
@@ -19,6 +20,7 @@ import zeta.android.myntra.managers.params.ProductDetailsParams;
 import zeta.android.myntra.models.pdp.PdpModel;
 import zeta.android.myntra.models.pdp.errors.PdpException;
 import zeta.android.myntra.models.products.ProductId;
+import zeta.android.utils.lang.StringUtils;
 
 @ParametersAreNonnullByDefault
 public class ProductsDetailsPresenter extends ZetaRxFragmentLifeCyclePresenter<ProductsPresentation> {
@@ -38,7 +40,26 @@ public class ProductsDetailsPresenter extends ZetaRxFragmentLifeCyclePresenter<P
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        //no op
+        mPresentation.inflateMenu(menu, inflater, R.menu.product_details_menu);
+        mPresentation.showActionBarText(StringUtils.EMPTY_STRING);
+    }
+
+    @Override
+    public void onPrepareOptionsMenu(Menu menu) {
+        //TODO::
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_cart:
+                mPresentation.navigateToCartPage();
+                return true;
+            case R.id.action_search:
+                mPresentation.navigateToSearchPage();
+                return true;
+        }
+        return false;
     }
 
     public void onCreate(ProductsPresenterParam presenterParam) {
