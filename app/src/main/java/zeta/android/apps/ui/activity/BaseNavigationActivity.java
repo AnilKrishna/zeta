@@ -1,6 +1,8 @@
 package zeta.android.apps.ui.activity;
 
+import android.content.IntentSender;
 import android.support.design.widget.NavigationView;
+import android.util.Log;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 import javax.inject.Inject;
@@ -25,5 +27,7 @@ public abstract class BaseNavigationActivity extends DaggerAwareActivity impleme
         return mNavigationFragmentManager;
     }
     //endregion
+
+
 
 }

@@ -1,5 +1,7 @@
 package zeta.android.myntra.utils;
 
+import android.support.annotation.Nullable;
+
 import com.google.gson.Gson;
 
 import java.io.IOException;
@@ -21,7 +23,7 @@ public class TestUtils {
 
     private static final String DATE_FORMAT = "MM/dd/yyyy";
 
-    public static String getFormattedDate(Date date) {
+    public static String getFormattedDate(@Nullable Date date) {
         if (date == null) {
             return StringUtils.EMPTY_STRING;
         }

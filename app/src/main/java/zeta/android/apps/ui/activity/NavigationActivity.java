@@ -29,7 +29,10 @@ import zeta.android.apps.di.component.ZetaAppComponent;
 import zeta.android.apps.presenter.NavigationPresenter;
 import zeta.android.apps.ui.common.BaseViews;
 import zeta.android.apps.ui.fragment.DebugFragment;
+import zeta.android.apps.ui.fragment.accounts.AccountsFragment;
+import zeta.android.apps.ui.fragment.myorders.MyOrderFragment;
 import zeta.android.apps.ui.fragment.search.SearchResultFragment;
+import zeta.android.apps.ui.fragment.settings.SettingsFragment;
 import zeta.android.apps.ui.presentation.NavigationPresentation;
 
 @ParametersAreNonnullByDefault
@@ -159,11 +162,17 @@ public class NavigationActivity extends BaseNavigationActivity implements Naviga
             case R.id.nav_home:
                 mPresenter.onMenuItemHomeSelected();
                 break;
-            case R.id.nav_score:
+            case R.id.nav_accounts:
+                mPresenter.onMenuItemAccountsSelected();
                 break;
-            case R.id.nav_favorites:
+            case R.id.nav_refer_and_earn:
+                mPresenter.onMenuItemReferAndEarnSelected();
+                break;
+            case R.id.nav_my_orders:
+                mPresenter.onMenuItemMyOrdersSelected();
                 break;
             case R.id.nav_settings:
+                mPresenter.onMenuItemSettingsSelected();
                 break;
             case R.id.nav_debug:
                 mPresenter.onMenuItemDebugSelected();
@@ -188,6 +197,26 @@ public class NavigationActivity extends BaseNavigationActivity implements Naviga
     @Override
     public void showDebugScreen() {
         mNavigationFragmentManager.addFragmentToBackStack(DebugFragment.newInstance());
+    }
+
+    @Override
+    public void showAccountsScreen() {
+        mNavigationFragmentManager.addFragmentToBackStack(AccountsFragment.newInstance());
+    }
+
+    @Override
+    public void showMyOrdersScreen() {
+        mNavigationFragmentManager.addFragmentToBackStack(MyOrderFragment.newInstance());
+    }
+
+    @Override
+    public void showReferAndEarnScreen() {
+
+    }
+
+    @Override
+    public void showSettingsScreen() {
+        mNavigationFragmentManager.addFragmentToBackStack(SettingsFragment.newInstance());
     }
 
     //endregion

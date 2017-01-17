@@ -3,12 +3,16 @@ package zeta.android.apps.ui.fragment.search;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.support.annotation.MenuRes;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
@@ -99,6 +103,23 @@ public class SearchResultFragment extends BaseNavigationFragment implements Sear
     }
 
     @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        mPresenter.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public void onPrepareOptionsMenu(Menu menu) {
+        super.onPrepareOptionsMenu(menu);
+        mPresenter.onPrepareOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return mPresenter.onOptionsItemSelected(item) || super.onOptionsItemSelected(item);
+    }
+
+    @Override
     public void onSaveInstanceState(Bundle outState) {
         outState.putParcelable(ARG_HOME_SAVED_STATE_PRESENTER, mPresenter.getSavedState());
         super.onSaveInstanceState(outState);
@@ -120,6 +141,16 @@ public class SearchResultFragment extends BaseNavigationFragment implements Sear
         super.onDestroy();
         mPresenter.onDestroy();
         mPresenter = null;
+    }
+
+    @Override
+    public void inflateMenu(Menu menu, MenuInflater inflater, @MenuRes int menuResId) {
+        inflater.inflate(menuResId, menu);
+    }
+
+    @Override
+    public void showActionBarText(String actionBarTitle) {
+        //setActionBarTitle(actionBarTitle);
     }
 
     @Override
@@ -150,6 +181,16 @@ public class SearchResultFragment extends BaseNavigationFragment implements Sear
     @Override
     public void updateImageAdapters(List<ProductGist> productGists, int previousSize) {
         mListViewAdapter.updateImagesModel(productGists, previousSize);
+    }
+
+    @Override
+    public void navigateToCartPage() {
+
+    }
+
+    @Override
+    public void navigateToSearchPage() {
+
     }
 
     @Override

@@ -7,4 +7,12 @@ public interface NavigationPresentation {
     void showBaseScreen();
 
     void showDebugScreen();
+
+    void showSettingsScreen();
+
+    void showAccountsScreen();
+
+    void showReferAndEarnScreen();
+
+    void showMyOrdersScreen();
 }

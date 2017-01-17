@@ -24,6 +24,7 @@ import zeta.android.myntra.managers.params.SearchParams;
 import zeta.android.myntra.models.products.ProductGist;
 import zeta.android.myntra.models.search.SearchModel;
 import zeta.android.myntra.models.search.errors.SearchException;
+import zeta.android.utils.lang.StringUtils;
 
 @ParametersAreNonnullByDefault
 public class SearchResultPresenter extends ZetaRxFragmentLifeCyclePresenter<SearchResultPresentation> {
@@ -51,16 +52,25 @@ public class SearchResultPresenter extends ZetaRxFragmentLifeCyclePresenter<Sear
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        //no op
+        mPresentation.inflateMenu(menu, inflater, R.menu.product_search_menu);
+        mPresentation.showActionBarText(StringUtils.EMPTY_STRING);
     }
 
     @Override
     public void onPrepareOptionsMenu(Menu menu) {
-
+        //TODO::
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_cart:
+                mPresentation.navigateToCartPage();
+                return true;
+            case R.id.action_search:
+                mPresentation.navigateToSearchPage();
+                return true;
+        }
         return false;
     }
 

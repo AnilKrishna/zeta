@@ -49,7 +49,7 @@ import zeta.android.utils.view.ViewUtils;
 public class ProductDetailsFragment extends BaseNavigationFragment implements ProductsPresentation {
 
     private static final String ARG_BUNDLE_PDP_PARAMS = "ARG_BUNDLE_PDP_PARAMS";
-    private static final String ARG_HOME_SAVED_STATE_PRESENTER = "ARG_HOME_SAVED_STATE_PRESENTER";
+    private static final String ARG_HOME_SAVED_STATE_PRESENTER = "ARG_PRODUCT_DETAILS_SAVED_STATE_PRESENTER";
 
     private Views mViews;
 

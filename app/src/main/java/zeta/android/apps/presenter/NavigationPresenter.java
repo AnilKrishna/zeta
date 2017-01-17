@@ -43,6 +43,22 @@ public class NavigationPresenter extends ZetaRxActivityLifeCyclePresenter<Naviga
         mPresentation.showBaseScreen();
     }
 
+    public void onMenuItemAccountsSelected() {
+        mPresentation.showAccountsScreen();
+    }
+
+    public void onMenuItemMyOrdersSelected() {
+        mPresentation.showMyOrdersScreen();
+    }
+
+    public void onMenuItemReferAndEarnSelected() {
+        mPresentation.showReferAndEarnScreen();
+    }
+
+    public void onMenuItemSettingsSelected() {
+        mPresentation.showSettingsScreen();
+    }
+
     public void onMenuItemDebugSelected() {
         mPresentation.showDebugScreen();
     }
