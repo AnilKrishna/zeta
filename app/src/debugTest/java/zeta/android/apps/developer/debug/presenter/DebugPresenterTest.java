@@ -83,6 +83,7 @@ public class DebugPresenterTest {
 
         verify(mPresentation).setLoggerSpinnerSelected(eq(mockHttpLevel.ordinal()));
         verify(mPresentation).setEnableLoggingToolsApplyButton(eq(false));
+        verifyZeroInteractions(mPresentation);
     }
 
     @Test

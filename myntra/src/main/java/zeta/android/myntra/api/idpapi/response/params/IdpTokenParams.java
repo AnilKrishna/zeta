@@ -3,6 +3,7 @@ package zeta.android.myntra.api.idpapi.response.params;
 import com.google.gson.annotations.SerializedName;
 
 public class IdpTokenParams {
+
     public final String action;
 
     public final String referer;

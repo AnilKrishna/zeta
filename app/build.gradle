@@ -22,7 +22,7 @@ android {
 
     splits {
         abi {
-            enable false //project.hasProperty('splitApks')
+            enable //project.hasProperty('splitApks')
             reset()
             include 'x86', 'armeabi', 'armeabi-v7a', 'mips'
             universalApk = true
