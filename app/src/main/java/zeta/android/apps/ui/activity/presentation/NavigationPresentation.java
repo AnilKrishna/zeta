@@ -1,4 +1,4 @@
-package zeta.android.apps.ui.presentation;
+package zeta.android.apps.ui.activity.presentation;
 
 public interface NavigationPresentation {
 

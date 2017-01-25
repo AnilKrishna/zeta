@@ -1,4 +1,4 @@
-package zeta.android.apps.presenter;
+package zeta.android.apps.ui.activity.presenter;
 
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -12,9 +12,10 @@ import javax.annotation.ParametersAreNonnullByDefault;
 
 import okhttp3.logging.HttpLoggingInterceptor;
 import zeta.android.apps.R;
+import zeta.android.apps.ui.common.ZetaRxFragmentLifeCyclePresenter;
 import zeta.android.apps.rx.providers.RxSchedulerProvider;
 import zeta.android.apps.sharedPref.DebugSharedPreferences;
-import zeta.android.apps.ui.presentation.DebugPresentation;
+import zeta.android.apps.ui.activity.presentation.DebugPresentation;
 
 @ParametersAreNonnullByDefault
 public class DebugPresenter extends ZetaRxFragmentLifeCyclePresenter<DebugPresentation> {

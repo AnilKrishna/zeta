@@ -1,4 +1,4 @@
-package zeta.android.apps.presenter;
+package zeta.android.apps.ui.common;
 
 public interface ZetaActivityLifeCyclePresenter <Presentation> {
 

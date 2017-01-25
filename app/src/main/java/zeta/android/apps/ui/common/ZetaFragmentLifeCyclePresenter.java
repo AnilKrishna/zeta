@@ -1,4 +1,4 @@
-package zeta.android.apps.presenter;
+package zeta.android.apps.ui.common;
 
 import android.view.Menu;
 import android.view.MenuInflater;

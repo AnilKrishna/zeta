@@ -1,11 +1,12 @@
-package zeta.android.apps.presenter;
+package zeta.android.apps.ui.activity.presenter;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 import javax.inject.Inject;
 
 import zeta.android.apps.BuildConfig;
 import zeta.android.apps.rx.providers.RxSchedulerProvider;
-import zeta.android.apps.ui.presentation.NavigationPresentation;
+import zeta.android.apps.ui.activity.presentation.NavigationPresentation;
+import zeta.android.apps.ui.common.ZetaRxActivityLifeCyclePresenter;
 
 @ParametersAreNonnullByDefault
 public class NavigationPresenter extends ZetaRxActivityLifeCyclePresenter<NavigationPresentation> {

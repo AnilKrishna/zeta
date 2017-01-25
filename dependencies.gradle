@@ -9,6 +9,8 @@ ext.versions = [
         dexmakerVersion                   : "1.2",
         multiDexVersion                   : "1.0.1",
 
+        facebookSdkVersion                : "4.18.0",
+
         butterKnifeVersion                : "8.4.0",
         bundlerVersion                    : "1.1.2",
         eventBusVersion                   : "3.0.0",
@@ -60,7 +62,8 @@ ext.versions = [
         gradlePluginVersion               : "2.2.3",
         retroLambdaPluginVersion          : "3.2.5",
         retrolombokPluginVersion          : "0.2.3.a2",
-        frodoPluginVersion                : "0.8.3"
+        frodoPluginVersion                : "0.8.3",
+        gmsServicesPluginVersion          : "3.0.0",
 ]
 
 ext.gradlePlugins = [
@@ -69,7 +72,8 @@ ext.gradlePlugins = [
         retroLambdaPlugin : "me.tatarka:gradle-retrolambda:$versions.retroLambdaPluginVersion",
         frodoPlugin       : "com.fernandocejas.frodo:frodo-plugin:$versions.frodoPluginVersion",
         butterKnifePlugin : "com.jakewharton:butterknife-gradle-plugin:$versions.butterKnifeVersion",
-        lombokPlugin      : "me.tatarka.retrolambda.projectlombok:lombok.ast:$versions.retrolombokPluginVersion"
+        lombokPlugin      : "me.tatarka.retrolambda.projectlombok:lombok.ast:$versions.retrolombokPluginVersion",
+        gmsServicesPlugin : "com.google.gms:google-services:$versions.gmsServicesPluginVersion",
 ]
 
 ext.libraries = [
@@ -95,10 +99,15 @@ ext.libraries = [
         playServicesMaps           : "com.google.android.gms:play-services-maps:$versions.playServicesVersion",
         playServicesPlaces         : "com.google.android.gms:play-services-places:$versions.playServicesVersion",
         playServicesLocation       : "com.google.android.gms:play-services-location:$versions.playServicesVersion",
+        playServicesAuthentication : "com.google.android.gms:play-services-auth:$versions.playServicesVersion",
         //endregion
 
         //region firebase
         appIndexing                : "com.google.firebase:firebase-appindexing:$versions.playServicesVersion",
+        //endregion
+
+        //region facebook
+        facebookSdk                : "com.facebook.android:facebook-android-sdk:$versions.facebookSdkVersion",
         //endregion
 
         //region IMAGE PROCESSOR

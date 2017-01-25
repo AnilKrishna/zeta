@@ -57,15 +57,18 @@ android {
 
         full {
             applicationIdSuffix ".full"
+            versionNameSuffix "-full"
             versionCode 3
             versionName "1.0.3.1"
         }
 
         lite {
             applicationIdSuffix ".lite"
+            versionNameSuffix "-lite"
             versionCode 3
             versionName "1.0.3.2"
         }
+        
     }
 
     aaptOptions {
@@ -177,6 +180,12 @@ dependencies {
     compile libraries.zetaEither
     compile libraries.zetaListItemDivider
     compile libraries.zetaHeaderAndFooterAdapters
+
+    //Facebook
+    fullCompile libraries.facebookSdk
+
+    //Google Authentication
+    fullCompile libraries.playServicesAuthentication
 
     //DEVELOPER TOOLS
     compile libraries.timber

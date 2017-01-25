@@ -9,9 +9,9 @@ import android.view.ViewGroup;
 import javax.annotation.ParametersAreNonnullByDefault;
 import javax.inject.Inject;
 
-import zeta.android.apps.presenter.DebugPresenter;
+import zeta.android.apps.ui.activity.presenter.DebugPresenter;
 import zeta.android.apps.ui.fragment.common.BaseNavigationFragment;
-import zeta.android.apps.ui.presentation.DebugPresentation;
+import zeta.android.apps.ui.activity.presentation.DebugPresentation;
 import zeta.android.apps.R;
 import zeta.android.apps.di.component.ZetaAppComponent;
 import zeta.android.apps.ui.common.BaseViews;

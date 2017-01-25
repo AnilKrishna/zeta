@@ -14,7 +14,7 @@ import java.util.List;
 import javax.annotation.ParametersAreNonnullByDefault;
 
 import zeta.android.apps.R;
-import zeta.android.apps.presenter.ZetaRxFragmentLifeCyclePresenter;
+import zeta.android.apps.ui.common.ZetaRxFragmentLifeCyclePresenter;
 import zeta.android.apps.rx.providers.RxSchedulerProvider;
 import zeta.android.apps.rx.subscriber.ZetaSubscriber;
 import zeta.android.apps.ui.fragment.products.ProductsDetailsFragmentParam;

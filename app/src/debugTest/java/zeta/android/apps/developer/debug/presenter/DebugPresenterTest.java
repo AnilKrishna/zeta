@@ -11,9 +11,9 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import okhttp3.logging.HttpLoggingInterceptor;
 import zeta.android.apps.rx.providers.TestSchedulerProvider;
-import zeta.android.apps.ui.presentation.DebugPresentation;
-import zeta.android.apps.presenter.DebugPresenter;
 import zeta.android.apps.sharedPref.DebugSharedPreferences;
+import zeta.android.apps.ui.activity.presentation.DebugPresentation;
+import zeta.android.apps.ui.activity.presenter.DebugPresenter;
 
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.verify;
