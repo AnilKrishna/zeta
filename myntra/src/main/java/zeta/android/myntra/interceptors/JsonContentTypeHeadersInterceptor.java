@@ -8,13 +8,13 @@ import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.Response;
 
+import static zeta.android.myntra.interceptors.MyntraHttpHeadersInterceptorConst.KEY.KEY_ACCEPT;
+import static zeta.android.myntra.interceptors.MyntraHttpHeadersInterceptorConst.KEY.KEY_CONTENT_TYPE;
+import static zeta.android.myntra.interceptors.MyntraHttpHeadersInterceptorConst.VALUE.VALUE_ACCEPT;
+import static zeta.android.myntra.interceptors.MyntraHttpHeadersInterceptorConst.VALUE.VALUE_CONTENT_TYPE;
+
 @ParametersAreNonnullByDefault
 public class JsonContentTypeHeadersInterceptor implements Interceptor {
-
-    private static final String KEY_ACCEPT = "Accept";
-    private static final String KEY_CONTENT_TYPE = "Content-Type";
-    private static final String VALUE_ACCEPT = "application/json";
-    private static final String VALUE_CONTENT_TYPE = "application/json";
 
     @Override
     public Response intercept(Chain chain) throws IOException {

@@ -29,15 +29,22 @@ public class SessionException extends BaseException {
         switch (errorCode) {
             case SearchError.NO_SEARCH_RESULT_FOUND:
                 return SearchError.NO_SEARCH_RESULT_FOUND;
+            case SearchError.NO_LOGIN_TYPE_FOUND:
+                return SearchError.NO_LOGIN_TYPE_FOUND;
             default:
                 return SearchError.UNKNOWN;
         }
     }
 
     @Retention(RetentionPolicy.SOURCE)
-    @StringDef({SearchError.NO_SEARCH_RESULT_FOUND, SearchError.UNKNOWN})
+    @StringDef({
+            SearchError.NO_SEARCH_RESULT_FOUND,
+            SearchError.NO_LOGIN_TYPE_FOUND,
+            SearchError.UNKNOWN
+    })
     public @interface SearchError {
         String NO_SEARCH_RESULT_FOUND = "no search result found";
+        String NO_LOGIN_TYPE_FOUND = "no login type found";
         String UNKNOWN = "UNKNOWN";
     }
 }

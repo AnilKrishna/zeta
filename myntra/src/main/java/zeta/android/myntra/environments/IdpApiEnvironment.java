@@ -17,8 +17,8 @@ public class IdpApiEnvironment implements BaseEnvironment {
     private final int mEnvironment;
     private final String mBaseUrl;
 
-    private static String PROD_BASE_URL = "http://developer.myntra.com";
-    private static String STAGE_BASE_URL = "http://foxhaddeveloper.myn.myntra.com";
+    private static String PROD_BASE_URL = "https://developer.myntra.com";
+    private static String STAGE_BASE_URL = "https://foxhaddeveloper.myn.myntra.com";
     private static String UAT_BASE_URL = STAGE_BASE_URL;
 
     public IdpApiEnvironment(@Environment int environment) {

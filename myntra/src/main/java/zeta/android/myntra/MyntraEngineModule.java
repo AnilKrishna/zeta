@@ -26,6 +26,7 @@ import zeta.android.myntra.interceptors.DevApiHeadersInterceptor;
 import zeta.android.myntra.interceptors.IdpApiHeadersInterceptor;
 import zeta.android.myntra.interceptors.JsonContentTypeHeadersInterceptor;
 import zeta.android.myntra.interceptors.XmlContentTypeHeadersInterceptor;
+import zeta.android.myntra.providers.SessionTokenProvider;
 import zeta.android.myntra.qualifiers.okhttp.JsonContentTypeOkHttp;
 import zeta.android.myntra.qualifiers.okhttp.MyntraOkHttp;
 import zeta.android.myntra.qualifiers.okhttp.XmlContentTypeOkHttp;
@@ -114,8 +115,8 @@ public class MyntraEngineModule {
         final MyntraEngineCachePolicy cachePolicy = config.getCachePolicy();
         return cachePolicy != null ? cachePolicy : MyntraEngineCachePolicy.create(context.getCacheDir()).build();
     }
-    //region retrofit
 
+    //region retrofit
     @Provides
     @Singleton
     BaseRetrofitFactory provideBaseRetrofitFactory(final Converter.Factory gsonConverterFactory,
@@ -131,29 +132,42 @@ public class MyntraEngineModule {
     @RetrofitDevApi
     Retrofit providesMyntraDevApiRetrofit(DevApiEnvironment myntraDevApiEnvironment,
                                           @JsonContentTypeOkHttp OkHttpClient okHttpClient,
-                                          BaseRetrofitFactory baseRetrofitFactory) {
+                                          BaseRetrofitFactory baseRetrofitFactory,
+                                          DevApiHeadersInterceptor devApiHeadersInterceptor) {
         return baseRetrofitFactory.newRetrofitBuilder()
                 .baseUrl(myntraDevApiEnvironment.getBaseUrl())
                 .client(okHttpClient.newBuilder()
-                        .addNetworkInterceptor(new DevApiHeadersInterceptor())
+                        .addNetworkInterceptor(devApiHeadersInterceptor)
                         .build())
                 .build();
     }
-
 
     @Provides
     @Singleton
     @RetrofitIdpApi
     Retrofit providesMyntraIdpApiRetrofit(IdpApiEnvironment idpApiEnvironment,
                                           @JsonContentTypeOkHttp OkHttpClient okHttpClient,
-                                          BaseRetrofitFactory baseRetrofitFactory) {
+                                          BaseRetrofitFactory baseRetrofitFactory,
+                                          IdpApiHeadersInterceptor idpApiHeadersInterceptor) {
         return baseRetrofitFactory.newRetrofitBuilder()
                 .baseUrl(idpApiEnvironment.getBaseUrl())
                 .client(okHttpClient.newBuilder()
-                        .addNetworkInterceptor(new IdpApiHeadersInterceptor())
+                        .addNetworkInterceptor(idpApiHeadersInterceptor)
                         .build())
                 .build();
     }
     //endregion retrofit
+
+    //region interceptors
+    @Provides
+    IdpApiHeadersInterceptor providesIdpApiHeadersInterceptor(SessionTokenProvider sessionTokenProvider) {
+        return new IdpApiHeadersInterceptor(sessionTokenProvider);
+    }
+
+    @Provides
+    DevApiHeadersInterceptor providesDevApiHeadersInterceptor() {
+        return new DevApiHeadersInterceptor();
+    }
+    //region retrofit
 
 }

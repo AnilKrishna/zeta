@@ -4,6 +4,9 @@ import com.google.gson.annotations.SerializedName;
 
 public class IdpUserProfileResponse {
 
+    @SerializedName("email")
+    public final String email;
+
     @SerializedName("firstname")
     public final String firstName;
 
@@ -55,18 +58,19 @@ public class IdpUserProfileResponse {
     @SerializedName("usertype")
     public final String userType;
 
-    @SerializedName("phone")
-    public final String phone;
+    @SerializedName("mobile")
+    public final String mobile;
 
     @SerializedName("name")
     public final String name;
 
-    public IdpUserProfileResponse(String firstName, String lastName, String imageJsonEntryMap,
+    public IdpUserProfileResponse(String email, String firstName, String lastName, String imageJsonEntryMap,
                                   String gender, String image, String imageType, String coverImage,
                                   String coverImageType, String publicProfileId, String uidx,
                                   String pLevel, IdpUserProfileCounts counts, String bio,
                                   String tagsMap, String location, String dateOfBirth,
-                                  String userType, String phone, String name) {
+                                  String userType, String mobile, String name) {
+        this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
         this.imageJsonEntryMap = imageJsonEntryMap;
@@ -84,7 +88,7 @@ public class IdpUserProfileResponse {
         this.location = location;
         this.dateOfBirth = dateOfBirth;
         this.userType = userType;
-        this.phone = phone;
+        this.mobile = mobile;
         this.name = name;
     }
 }

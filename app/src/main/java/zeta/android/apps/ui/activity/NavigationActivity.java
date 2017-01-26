@@ -26,6 +26,7 @@ import butterknife.BindView;
 import zeta.android.apps.R;
 import zeta.android.apps.ZetaApplication;
 import zeta.android.apps.di.component.ZetaAppComponent;
+import zeta.android.apps.ui.activity.presentation.NavigationPresentation;
 import zeta.android.apps.ui.activity.presenter.NavigationPresenter;
 import zeta.android.apps.ui.common.BaseViews;
 import zeta.android.apps.ui.fragment.DebugFragment;
@@ -33,7 +34,6 @@ import zeta.android.apps.ui.fragment.accounts.AccountsFragment;
 import zeta.android.apps.ui.fragment.myorders.MyOrderFragment;
 import zeta.android.apps.ui.fragment.search.SearchResultFragment;
 import zeta.android.apps.ui.fragment.settings.SettingsFragment;
-import zeta.android.apps.ui.activity.presentation.NavigationPresentation;
 
 @ParametersAreNonnullByDefault
 public class NavigationActivity extends BaseNavigationActivity implements NavigationPresentation {

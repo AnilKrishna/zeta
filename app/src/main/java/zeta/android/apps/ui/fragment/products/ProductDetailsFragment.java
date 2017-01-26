@@ -35,8 +35,7 @@ import butterknife.BindView;
 import zeta.android.apps.R;
 import zeta.android.apps.di.component.ZetaAppComponent;
 import zeta.android.apps.receiver.ActionBroadcastReceiver;
-import zeta.android.apps.ui.activity.helpers.CustomTabActivityHelper;
-import zeta.android.apps.ui.activity.helpers.WebViewFallback;
+import zeta.android.apps.ui.activity.WebViewActivity;
 import zeta.android.apps.ui.common.BaseViews;
 import zeta.android.apps.ui.fragment.common.BaseNavigationFragment;
 import zeta.android.apps.ui.fragment.products.presentation.ProductsPresentation;
@@ -255,7 +254,11 @@ public class ProductDetailsFragment extends BaseNavigationFragment implements Pr
         intentBuilder.enableUrlBarHiding();
         intentBuilder.setStartAnimations(context, R.anim.slide_in_right, R.anim.slide_out_right);
         intentBuilder.setExitAnimations(context, R.anim.slide_in_left, R.anim.slide_out_right);
-        CustomTabActivityHelper.openCustomTab(getActivity(), intentBuilder.build(), Uri.parse(url), new WebViewFallback());
+        //CustomTabActivityHelper.openCustomTab(getActivity(), intentBuilder.build(), Uri.parse(url), new WebViewFallback());
+
+        Intent intent = new Intent(getActivity(), WebViewActivity.class);
+        intent.putExtra(WebViewActivity.EXTRA_URL, Uri.parse(url).toString());
+        getActivity().startActivity(intent);
     }
 
     private PendingIntent createPendingIntent(int actionSourceId) {

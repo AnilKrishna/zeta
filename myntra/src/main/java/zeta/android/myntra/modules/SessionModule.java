@@ -9,6 +9,7 @@ import zeta.android.myntra.managers.SessionManager;
 import zeta.android.myntra.models.common.ITransformer;
 import zeta.android.myntra.models.session.SessionModel;
 import zeta.android.myntra.models.transformers.SessionModelTransformer;
+import zeta.android.myntra.providers.SessionTokenProvider;
 import zeta.android.myntra.qualifiers.retrofit.RetrofitIdpApi;
 
 @Module
@@ -26,8 +27,9 @@ public class SessionModule {
 
     @Provides
     SessionManager providesSessionManager(IdpDevApi idpDevApi,
+                                          SessionTokenProvider sessionTokenProvider,
                                           ITransformer<IdpTokenResponse, SessionModel> transformer) {
-        return new SessionManager(idpDevApi, transformer);
+        return new SessionManager(idpDevApi, sessionTokenProvider, transformer);
     }
 
 }
