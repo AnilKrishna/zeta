@@ -44,8 +44,6 @@ android {
 }
 
 dependencies {
-    //compile project(':common')
-
     compile libraries.dagger
     apt libraries.daggerCompiler
 
