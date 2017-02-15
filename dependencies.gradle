@@ -59,6 +59,7 @@ ext.versions = [
         supportTestVersion                : "0.4.1",
         espressoVersion                   : '2.2.1',
 
+        aptPluginVersion                  : "1.8",
         gradlePluginVersion               : "2.2.3",
         retroLambdaPluginVersion          : "3.2.5",
         retrolombokPluginVersion          : "0.2.3.a2",
@@ -67,7 +68,7 @@ ext.versions = [
 ]
 
 ext.gradlePlugins = [
-        aptPlugin         : "com.neenbedankt.gradle.plugins:android-apt:1.8",
+        aptPlugin         : "com.neenbedankt.gradle.plugins:android-apt:$versions.aptPluginVersion",
         androidToolsPlugin: "com.android.tools.build:gradle:$versions.gradlePluginVersion",
         retroLambdaPlugin : "me.tatarka:gradle-retrolambda:$versions.retroLambdaPluginVersion",
         frodoPlugin       : "com.fernandocejas.frodo:frodo-plugin:$versions.frodoPluginVersion",
