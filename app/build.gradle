@@ -156,6 +156,9 @@ dependencies {
         exclude group: 'com.google.android'
     }
 
+    //ANIMATION
+    compile libraries.lottieAnimation
+
     //ANNOTATION
     compile libraries.jsr305
     compile libraries.javaxAnnotationApi

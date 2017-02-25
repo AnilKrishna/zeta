@@ -13,6 +13,7 @@ import zeta.android.apps.di.module.OkHttpInterceptorsModule;
 import zeta.android.apps.di.module.SessionTokenModule;
 import zeta.android.apps.di.module.ZetaAppModule;
 import zeta.android.apps.ui.fragment.subcomponents.ZetaAccountsSubComponent;
+import zeta.android.apps.ui.fragment.subcomponents.ZetaHomeSubComponent;
 import zeta.android.apps.ui.fragment.subcomponents.ZetaLoginSubComponent;
 import zeta.android.apps.ui.fragment.subcomponents.ZetaMyOrdersSubComponent;
 import zeta.android.apps.ui.fragment.subcomponents.ZetaProductsSubComponent;
@@ -37,6 +38,8 @@ import zeta.android.myntra.modules.SessionModule;
 public interface ZetaAppComponent {
 
     ZetaLoginSubComponent zetaLoginComponent(SessionModule sessionModule);
+
+    ZetaHomeSubComponent zetaHomeComponent();
 
     ZetaAccountsSubComponent zetaAccountsComponent();
 

@@ -1,15 +1,17 @@
-package zeta.android.apps.ui.fragment.accounts;
+package zeta.android.apps.ui.fragment.home;
 
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 import android.support.design.widget.Snackbar;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ProgressBar;
+
+import com.airbnb.lottie.LottieAnimationView;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 import javax.inject.Inject;
@@ -18,14 +20,14 @@ import butterknife.BindView;
 import zeta.android.apps.R;
 import zeta.android.apps.di.component.ZetaAppComponent;
 import zeta.android.apps.ui.common.BaseViews;
-import zeta.android.apps.ui.fragment.accounts.presentation.AccountsPresentation;
-import zeta.android.apps.ui.fragment.accounts.presenter.AccountsPresenter;
-import zeta.android.apps.ui.fragment.accounts.presenter.AccountsPresenterParam;
 import zeta.android.apps.ui.fragment.common.BaseNavigationFragment;
+import zeta.android.apps.ui.fragment.home.presentation.HomePresentation;
+import zeta.android.apps.ui.fragment.home.presenter.HomePresenter;
+import zeta.android.apps.ui.fragment.home.presenter.HomePresenterParam;
 import zeta.android.utils.view.ViewUtils;
 
 @ParametersAreNonnullByDefault
-public class AccountsFragment extends BaseNavigationFragment implements AccountsPresentation {
+public class HomeFragment extends BaseNavigationFragment implements HomePresentation {
 
     private static final String ARG_HOME_SAVED_STATE_PRESENTER = "ARG_ACCOUNTS_SAVED_STATE_PRESENTER";
 
@@ -35,28 +37,31 @@ public class AccountsFragment extends BaseNavigationFragment implements Accounts
     private Parcelable mSavedState;
 
     @Inject
-    AccountsPresenter mPresenter;
+    HomePresenter mPresenter;
 
     static class Views extends BaseViews {
 
         @BindView(R.id.zeta_progress_bar)
         ProgressBar progressBar;
 
-        @BindView(R.id.zeta_list_view)
-        RecyclerView listView;
+        @BindView(R.id.animation_view)
+        LottieAnimationView animationView;
+
+        @BindView(R.id.search_view_button)
+        Button searchViewButton;
 
         Views(View root) {
             super(root);
         }
     }
 
-    public static AccountsFragment newInstance() {
-        return new AccountsFragment();
+    public static HomeFragment newInstance() {
+        return new HomeFragment();
     }
 
     @Override
     public void configureDependencies(ZetaAppComponent component) {
-        component.zetaAccountsComponent().inject(this);
+        component.zetaHomeComponent().inject(this);
     }
 
     @Override
@@ -72,7 +77,7 @@ public class AccountsFragment extends BaseNavigationFragment implements Accounts
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_account, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_home, container, false);
         mViews = new Views(rootView);
         mPresenter.onCreateView(this);
         return rootView;
@@ -116,8 +121,8 @@ public class AccountsFragment extends BaseNavigationFragment implements Accounts
     }
 
     //region internal helper methods
-    private AccountsPresenterParam getPresenterParams() {
-        return AccountsPresenterParam.create()
+    private HomePresenterParam getPresenterParams() {
+        return HomePresenterParam.create()
                 .setSavedState(mSavedState)
                 .build();
     }

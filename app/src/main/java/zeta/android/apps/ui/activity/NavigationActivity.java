@@ -31,8 +31,8 @@ import zeta.android.apps.ui.activity.presenter.NavigationPresenter;
 import zeta.android.apps.ui.common.BaseViews;
 import zeta.android.apps.ui.fragment.DebugFragment;
 import zeta.android.apps.ui.fragment.accounts.AccountsFragment;
+import zeta.android.apps.ui.fragment.home.HomeFragment;
 import zeta.android.apps.ui.fragment.myorders.MyOrderFragment;
-import zeta.android.apps.ui.fragment.search.SearchResultFragment;
 import zeta.android.apps.ui.fragment.settings.SettingsFragment;
 
 @ParametersAreNonnullByDefault
@@ -109,7 +109,7 @@ public class NavigationActivity extends BaseNavigationActivity implements Naviga
         mViews.navigationView.setNavigationItemSelectedListener(this);
 
         if (savedInstanceState == null) {
-            mNavigationFragmentManager.addAsBaseFragment(SearchResultFragment.newInstance());
+            mNavigationFragmentManager.addAsBaseFragment(HomeFragment.newInstance());
         }
     }
 

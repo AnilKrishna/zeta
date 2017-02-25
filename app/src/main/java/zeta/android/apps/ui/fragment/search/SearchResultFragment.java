@@ -88,7 +88,7 @@ public class SearchResultFragment extends BaseNavigationFragment implements Sear
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_home, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_search_result, container, false);
         mViews = new Views(rootView);
         mPresenter.onCreateView(this);
         initAdaptersAndViews();

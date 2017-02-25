@@ -50,6 +50,8 @@ ext.versions = [
         zetaListItemDividerVersion        : "0.2",
         zetaHeaderAndFooterAdaptersVersion: "0.2",
 
+        lottieAnimationVersion            : "1.5.1",
+
         junitVersion                      : '4.12',
         robolectricVersion                : '3.0',
         assertJVersion                    : '1.7.1',
@@ -166,6 +168,10 @@ ext.libraries = [
         zetaEither                 : "com.github.zetaapps:either:$versions.zetaEitherVersion",
         zetaListItemDivider        : "com.github.zetaapps:List-Item-Divider:$versions.zetaListItemDividerVersion",
         zetaHeaderAndFooterAdapters: "com.github.zetaapps:Header-Footer-Adapter:$versions.zetaHeaderAndFooterAdaptersVersion",
+        //endregion
+
+        //region animation
+        lottieAnimation            : "com.airbnb.android:lottie:$versions.lottieAnimationVersion",
         //endregion
 
         //region DEVELOPER TOOLS

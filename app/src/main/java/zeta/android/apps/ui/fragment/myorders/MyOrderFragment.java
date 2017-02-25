@@ -72,7 +72,7 @@ public class MyOrderFragment extends BaseNavigationFragment implements MyOrderPr
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_home, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_my_order, container, false);
         mViews = new Views(rootView);
         mPresenter.onCreateView(this);
         return rootView;
