@@ -18,18 +18,22 @@
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/animation_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
         app:lottie_autoPlay="true"
+        android:layout_margin="@dimen/default_4x_padding_margin"
+        app:lottie_cacheStrategy="strong"
         app:lottie_fileName="PinJump.json"
         app:lottie_loop="true" />
 
     <android.support.v7.widget.AppCompatButton
         android:id="@+id/search_view_button"
+        style="@style/IndigoButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:layout_margin="@dimen/default_2x_padding_margin" />
+        android:layout_margin="@dimen/default_4x_padding_margin"
+        android:text="search nike" />
 
 
 </FrameLayout>

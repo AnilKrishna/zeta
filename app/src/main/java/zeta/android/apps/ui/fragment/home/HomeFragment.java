@@ -24,6 +24,7 @@ import zeta.android.apps.ui.fragment.common.BaseNavigationFragment;
 import zeta.android.apps.ui.fragment.home.presentation.HomePresentation;
 import zeta.android.apps.ui.fragment.home.presenter.HomePresenter;
 import zeta.android.apps.ui.fragment.home.presenter.HomePresenterParam;
+import zeta.android.apps.ui.fragment.search.SearchResultFragment;
 import zeta.android.utils.view.ViewUtils;
 
 @ParametersAreNonnullByDefault
@@ -80,6 +81,7 @@ public class HomeFragment extends BaseNavigationFragment implements HomePresenta
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
         mViews = new Views(rootView);
         mPresenter.onCreateView(this);
+        registerClickListener();
         return rootView;
     }
 
@@ -99,6 +101,7 @@ public class HomeFragment extends BaseNavigationFragment implements HomePresenta
     public void onDestroyView() {
         super.onDestroyView();
         mPresenter.onDestroyView();
+        unRegisterClickListener();
         mViews.clear();
         mViews = null;
     }
@@ -121,6 +124,16 @@ public class HomeFragment extends BaseNavigationFragment implements HomePresenta
     }
 
     //region internal helper methods
+    private void registerClickListener() {
+        mViews.searchViewButton.setOnClickListener(v ->
+                getNavigationFragmentManager().addFragmentToBackStack(
+                        SearchResultFragment.newInstance()));
+    }
+
+    private void unRegisterClickListener() {
+        mViews.searchViewButton.setOnClickListener(null);
+    }
+
     private HomePresenterParam getPresenterParams() {
         return HomePresenterParam.create()
                 .setSavedState(mSavedState)

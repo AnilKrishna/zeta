@@ -92,7 +92,7 @@ public class SearchResultPresenter extends ZetaRxFragmentLifeCyclePresenter<Sear
         if (hasSearchResultData()) {
             showSearchResult(mSavedSearchResults, mSavedPreviousSize);
         } else {
-            requestMynytraSearchResponse("W", DEFAULT_PAGE_START_INDEX);
+            requestMynytraSearchResponse("NIKE", DEFAULT_PAGE_START_INDEX);
         }
     }
 
