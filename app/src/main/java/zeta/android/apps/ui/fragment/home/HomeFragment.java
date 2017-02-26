@@ -2,10 +2,14 @@ package zeta.android.apps.ui.fragment.home;
 
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.support.annotation.MenuRes;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 import android.support.design.widget.Snackbar;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -92,6 +96,23 @@ public class HomeFragment extends BaseNavigationFragment implements HomePresenta
     }
 
     @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        mPresenter.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public void onPrepareOptionsMenu(Menu menu) {
+        super.onPrepareOptionsMenu(menu);
+        mPresenter.onPrepareOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return mPresenter.onOptionsItemSelected(item) || super.onOptionsItemSelected(item);
+    }
+
+    @Override
     public void onSaveInstanceState(Bundle outState) {
         outState.putParcelable(ARG_HOME_SAVED_STATE_PRESENTER, mPresenter.getSavedState());
         super.onSaveInstanceState(outState);
@@ -114,6 +135,16 @@ public class HomeFragment extends BaseNavigationFragment implements HomePresenta
     }
 
     @Override
+    public void inflateMenu(Menu menu, MenuInflater inflater, @MenuRes int menuResId) {
+        inflater.inflate(menuResId, menu);
+    }
+
+    @Override
+    public void showActionBarText(String actionBarTitle) {
+        //setActionBarTitle(actionBarTitle);
+    }
+
+    @Override
     public void showProgress(boolean show) {
         ViewUtils.setVisibility(mViews.progressBar, show);
     }
@@ -122,6 +153,17 @@ public class HomeFragment extends BaseNavigationFragment implements HomePresenta
     public void showSnackBarMessage(@StringRes int message) {
         Snackbar.make(mViews.getRootView(), getString(message), Snackbar.LENGTH_LONG).show();
     }
+
+    @Override
+    public void navigateToCartPage() {
+        openCustomTab("https://secure.myntra.com/checkout/cart", "");
+    }
+
+    @Override
+    public void navigateToSearchPage() {
+        getNavigationFragmentManager().addFragmentToBackStack(SearchResultFragment.newInstance());
+    }
+
 
     //region internal helper methods
     private void registerClickListener() {

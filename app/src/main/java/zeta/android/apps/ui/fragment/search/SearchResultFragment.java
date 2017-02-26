@@ -185,7 +185,7 @@ public class SearchResultFragment extends BaseNavigationFragment implements Sear
 
     @Override
     public void navigateToCartPage() {
-
+        openCustomTab("https://secure.myntra.com/checkout/cart", "");
     }
 
     @Override

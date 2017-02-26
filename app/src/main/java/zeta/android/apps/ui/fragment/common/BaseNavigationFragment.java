@@ -1,9 +1,14 @@
 package zeta.android.apps.ui.fragment.common;
 
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.IntDef;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
+import android.support.customtabs.CustomTabsIntent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,8 +18,13 @@ import java.lang.annotation.RetentionPolicy;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 
+import zeta.android.apps.R;
+import zeta.android.apps.receiver.ActionBroadcastReceiver;
+import zeta.android.apps.ui.activity.WebViewActivity;
 import zeta.android.apps.ui.activity.navigation.INavigationFragmentManager;
 import zeta.android.apps.ui.activity.navigation.NavigationFragmentManager;
+
+import static java.security.AccessController.getContext;
 
 @ParametersAreNonnullByDefault
 public abstract class BaseNavigationFragment extends DaggerAwareFragment implements INavigationFragmentManager {
@@ -118,20 +128,6 @@ public abstract class BaseNavigationFragment extends DaggerAwareFragment impleme
         super.onDestroy();
     }
 
-    /**
-     * Can be used to externally override the value typically set by
-     * {@link #setHasOptionsMenu(boolean)}.
-     *
-     * @param optionsMenuOverride the override value
-     */
-    public final void setHasOptionsMenuOverride(@HasOptionsMenuOverride int optionsMenuOverride) {
-        mHasOptionsMenuOverride = optionsMenuOverride;
-    }
-
-    public final boolean onSavedInstanceStateCalled() {
-        return mOnSaveInstanceStateCalled;
-    }
-
     //region INavigationFragmentManager
     @Override
     public NavigationFragmentManager getNavigationFragmentManager() {
@@ -141,5 +137,46 @@ public abstract class BaseNavigationFragment extends DaggerAwareFragment impleme
         return mNavigationFragmentManager.getNavigationFragmentManager();
     }
     //endregion
+
+    /**
+     * Can be used to externally override the value typically set by
+     * {@link #setHasOptionsMenu(boolean)}.
+     *
+     * @param optionsMenuOverride the override value
+     */
+    protected final void setHasOptionsMenuOverride(@HasOptionsMenuOverride int optionsMenuOverride) {
+        mHasOptionsMenuOverride = optionsMenuOverride;
+    }
+
+    protected final boolean onSavedInstanceStateCalled() {
+        return mOnSaveInstanceStateCalled;
+    }
+
+    protected void openCustomTab(String url, @Nullable String title) {
+        Context context = getContext();
+        CustomTabsIntent.Builder intentBuilder = new CustomTabsIntent.Builder();
+        intentBuilder.setToolbarColor(ContextCompat.getColor(context, R.color.zeta_md_indigo_700));
+        intentBuilder.setSecondaryToolbarColor(ContextCompat.getColor(context, R.color.zeta_md_indigo_500));
+        if (title != null) {
+            PendingIntent menuItemPendingIntent = createPendingIntent(context, ActionBroadcastReceiver.ACTION_MENU_ITEM);
+            intentBuilder.addMenuItem(title, menuItemPendingIntent);
+            intentBuilder.setShowTitle(true);
+        }
+        intentBuilder.addDefaultShareMenuItem();
+        intentBuilder.enableUrlBarHiding();
+        intentBuilder.setStartAnimations(context, R.anim.slide_in_right, R.anim.slide_out_right);
+        intentBuilder.setExitAnimations(context, R.anim.slide_in_left, R.anim.slide_out_right);
+        //CustomTabActivityHelper.openCustomTab(getActivity(), intentBuilder.build(), Uri.parse(url), new WebViewFallback());
+
+        Intent intent = new Intent(getActivity(), WebViewActivity.class);
+        intent.putExtra(WebViewActivity.EXTRA_URL, Uri.parse(url).toString());
+        getActivity().startActivity(intent);
+    }
+
+    private PendingIntent createPendingIntent(Context context, int actionSourceId) {
+        Intent actionIntent = new Intent(context, ActionBroadcastReceiver.class);
+        actionIntent.putExtra(ActionBroadcastReceiver.KEY_ACTION_SOURCE, actionSourceId);
+        return PendingIntent.getBroadcast(context, actionSourceId, actionIntent, 0);
+    }
 
 }

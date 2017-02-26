@@ -9,9 +9,11 @@ import com.google.auto.value.AutoValue;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 
+import zeta.android.apps.R;
 import zeta.android.apps.rx.providers.RxSchedulerProvider;
 import zeta.android.apps.ui.common.ZetaRxFragmentLifeCyclePresenter;
 import zeta.android.apps.ui.fragment.home.presentation.HomePresentation;
+import zeta.android.utils.lang.StringUtils;
 
 @ParametersAreNonnullByDefault
 public class HomePresenter extends ZetaRxFragmentLifeCyclePresenter<HomePresentation> {
@@ -28,16 +30,25 @@ public class HomePresenter extends ZetaRxFragmentLifeCyclePresenter<HomePresenta
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        //no op
+        mPresentation.inflateMenu(menu, inflater, R.menu.product_search_menu);
+        mPresentation.showActionBarText(StringUtils.EMPTY_STRING);
     }
 
     @Override
     public void onPrepareOptionsMenu(Menu menu) {
-
+        //TODO::
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_cart:
+                mPresentation.navigateToCartPage();
+                return true;
+            case R.id.action_search:
+                mPresentation.navigateToSearchPage();
+                return true;
+        }
         return false;
     }
 

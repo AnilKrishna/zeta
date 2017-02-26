@@ -239,32 +239,5 @@ public class ProductDetailsFragment extends BaseNavigationFragment implements Pr
                 .setSavedState(mSavedState)
                 .build();
     }
-
-    private void openCustomTab(String url, @Nullable String title) {
-        Context context = getContext();
-        CustomTabsIntent.Builder intentBuilder = new CustomTabsIntent.Builder();
-        intentBuilder.setToolbarColor(ContextCompat.getColor(context, R.color.zeta_md_indigo_700));
-        intentBuilder.setSecondaryToolbarColor(ContextCompat.getColor(context, R.color.zeta_md_indigo_500));
-        if (title != null) {
-            PendingIntent menuItemPendingIntent = createPendingIntent(ActionBroadcastReceiver.ACTION_MENU_ITEM);
-            intentBuilder.addMenuItem(title, menuItemPendingIntent);
-            intentBuilder.setShowTitle(true);
-        }
-        intentBuilder.addDefaultShareMenuItem();
-        intentBuilder.enableUrlBarHiding();
-        intentBuilder.setStartAnimations(context, R.anim.slide_in_right, R.anim.slide_out_right);
-        intentBuilder.setExitAnimations(context, R.anim.slide_in_left, R.anim.slide_out_right);
-        //CustomTabActivityHelper.openCustomTab(getActivity(), intentBuilder.build(), Uri.parse(url), new WebViewFallback());
-
-        Intent intent = new Intent(getActivity(), WebViewActivity.class);
-        intent.putExtra(WebViewActivity.EXTRA_URL, Uri.parse(url).toString());
-        getActivity().startActivity(intent);
-    }
-
-    private PendingIntent createPendingIntent(int actionSourceId) {
-        Intent actionIntent = new Intent(getContext(), ActionBroadcastReceiver.class);
-        actionIntent.putExtra(ActionBroadcastReceiver.KEY_ACTION_SOURCE, actionSourceId);
-        return PendingIntent.getBroadcast(getContext(), actionSourceId, actionIntent, 0);
-    }
     //endregion
 }
