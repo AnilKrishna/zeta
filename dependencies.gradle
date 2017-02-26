@@ -45,7 +45,7 @@ ext.versions = [
         timberVersion                     : "4.1.2",
         leakcanaryVersion                 : "1.5",
 
-        zetaUtilsVersion                  : "0.2",
+        zetaUtilsVersion                  : "0.3",
         zetaEitherVersion                 : "0.3",
         zetaListItemDividerVersion        : "0.2",
         zetaHeaderAndFooterAdaptersVersion: "0.2",
