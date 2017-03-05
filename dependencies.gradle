@@ -62,7 +62,7 @@ ext.versions = [
         espressoVersion                   : '2.2.1',
 
         aptPluginVersion                  : "1.8",
-        gradlePluginVersion               : "2.2.3",
+        gradlePluginVersion               : "2.3.0",
         retroLambdaPluginVersion          : "3.2.5",
         retrolombokPluginVersion          : "0.2.3.a2",
         frodoPluginVersion                : "0.8.3",

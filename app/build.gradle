@@ -80,7 +80,7 @@ android {
 
     lintOptions {
         warningsAsErrors false
-        abortOnError true
+        abortOnError false
 
         //App does not have deep linking.
         disable 'GoogleAppIndexingWarning'
