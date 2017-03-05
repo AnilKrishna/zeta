@@ -22,6 +22,7 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import zeta.android.apps.R;
+import zeta.android.apps.R2;
 import zeta.android.apps.di.component.ZetaAppComponent;
 import zeta.android.apps.ui.common.BaseViews;
 import zeta.android.apps.ui.fragment.common.BaseNavigationFragment;
@@ -46,13 +47,13 @@ public class HomeFragment extends BaseNavigationFragment implements HomePresenta
 
     static class Views extends BaseViews {
 
-        @BindView(R.id.zeta_progress_bar)
+        @BindView(R2.id.zeta_progress_bar)
         ProgressBar progressBar;
 
-        @BindView(R.id.animation_view)
+        @BindView(R2.id.animation_view)
         LottieAnimationView animationView;
 
-        @BindView(R.id.search_view_button)
+        @BindView(R2.id.search_view_button)
         Button searchViewButton;
 
         Views(View root) {

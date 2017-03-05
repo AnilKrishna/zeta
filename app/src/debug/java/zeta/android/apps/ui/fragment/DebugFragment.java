@@ -26,6 +26,7 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import zeta.android.apps.R;
+import zeta.android.apps.R2;
 import zeta.android.apps.di.component.ZetaAppComponent;
 import zeta.android.apps.ui.common.BaseViews;
 import zeta.android.apps.ui.fragment.common.BaseNavigationFragment;
@@ -42,31 +43,31 @@ public class DebugFragment extends BaseNavigationFragment implements DebugPresen
 
     static class Views extends BaseViews {
 
-        @BindView(R.id.debug_inspection_tools_title)
+        @BindView(R2.id.debug_inspection_tools_title)
         TextView title;
 
-        @BindView(R.id.debug_switch_enable_stetho)
+        @BindView(R2.id.debug_switch_enable_stetho)
         SwitchCompat switchStetho;
 
-        @BindView(R.id.debug_switch_enable_strict_mode)
+        @BindView(R2.id.debug_switch_enable_strict_mode)
         SwitchCompat switchStrictMode;
 
-        @BindView(R.id.debug_switch_enable_tiny_dancer)
+        @BindView(R2.id.debug_switch_enable_tiny_dancer)
         SwitchCompat switchTinyDancer;
 
-        @BindView(R.id.debug_switch_enable_leaky_canary)
+        @BindView(R2.id.debug_switch_enable_leaky_canary)
         SwitchCompat switchLeakyCanary;
 
-        @BindView(R.id.debug_inspection_tools_apply)
+        @BindView(R2.id.debug_inspection_tools_apply)
         Button inspectionToolApplyBtn;
 
-        @BindView(R.id.debug_logging_level_spinner)
+        @BindView(R2.id.debug_logging_level_spinner)
         Spinner loggingSpinner;
 
-        @BindView(R.id.debug_logging_apply)
+        @BindView(R2.id.debug_logging_apply)
         Button loggingToolApplyBtn;
 
-        @BindView(R.id.debug_capture_logs)
+        @BindView(R2.id.debug_capture_logs)
         Button captureLogs;
 
         Views(View root) {

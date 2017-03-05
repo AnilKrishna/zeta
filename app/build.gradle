@@ -17,12 +17,12 @@ android {
         targetSdkVersion versions.targetSdk
         versionCode 3
         versionName "1.0.3"
-        multiDexEnabled true
+        multiDexEnabled false
     }
 
     splits {
         abi {
-            enable //project.hasProperty('splitApks')
+            enable false //project.hasProperty('splitApks')
             reset()
             include 'x86', 'armeabi', 'armeabi-v7a', 'mips'
             universalApk = true

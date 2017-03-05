@@ -13,6 +13,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 
 import butterknife.BindView;
 import zeta.android.apps.R;
+import zeta.android.apps.R2;
 import zeta.android.apps.appconfig.GlideConfigModule;
 import zeta.android.apps.ui.common.BaseViews;
 import zeta.android.myntra.models.products.ProductGist;
@@ -25,13 +26,13 @@ public class SearchListViewComponent extends FrameLayout {
 
     static class Views extends BaseViews {
 
-        @BindView(R.id.zeta_product_image)
+        @BindView(R2.id.zeta_product_image)
         ImageView productImage;
 
-        @BindView(R.id.zeta_product_image_title)
+        @BindView(R2.id.zeta_product_image_title)
         TextView imageTitle;
 
-        @BindView(R.id.zeta_product_image_subtitle)
+        @BindView(R2.id.zeta_product_image_subtitle)
         TextView imageSubTitle;
 
         Views(View rootView) {

@@ -24,6 +24,7 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import zeta.android.apps.R;
+import zeta.android.apps.R2;
 import zeta.android.apps.di.component.ZetaAppComponent;
 import zeta.android.apps.ui.adapters.SearchAdapter;
 import zeta.android.apps.ui.common.BaseViews;
@@ -55,10 +56,10 @@ public class SearchResultFragment extends BaseNavigationFragment implements Sear
 
     static class Views extends BaseViews {
 
-        @BindView(R.id.zeta_progress_bar)
+        @BindView(R2.id.zeta_progress_bar)
         ProgressBar progressBar;
 
-        @BindView(R.id.zeta_list_view)
+        @BindView(R2.id.zeta_list_view)
         RecyclerView listView;
 
         Views(View root) {

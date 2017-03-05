@@ -11,7 +11,7 @@ ext.versions = [
 
         facebookSdkVersion                : "4.18.0",
 
-        butterKnifeVersion                : "8.4.0",
+        butterKnifeVersion                : "8.5.1",
         bundlerVersion                    : "1.1.2",
         eventBusVersion                   : "3.0.0",
 
@@ -24,7 +24,7 @@ ext.versions = [
         autoValue                         : "1.3",
         autoValueParcel                   : "0.2.5",
 
-        daggerVersion                     : "2.8",
+        daggerVersion                     : "2.9",
         retrofitVersion                   : "2.1.0",
         rxJavaVersion                     : "1.2.4",
         rxAndroidVersion                  : "1.2.1",

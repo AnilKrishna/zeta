@@ -1,17 +1,11 @@
 package zeta.android.apps.ui.fragment.products;
 
-import android.app.PendingIntent;
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.annotation.MenuRes;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
-import android.support.customtabs.CustomTabsIntent;
 import android.support.design.widget.Snackbar;
-import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -33,9 +27,8 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import zeta.android.apps.R;
+import zeta.android.apps.R2;
 import zeta.android.apps.di.component.ZetaAppComponent;
-import zeta.android.apps.receiver.ActionBroadcastReceiver;
-import zeta.android.apps.ui.activity.WebViewActivity;
 import zeta.android.apps.ui.common.BaseViews;
 import zeta.android.apps.ui.fragment.common.BaseNavigationFragment;
 import zeta.android.apps.ui.fragment.products.presentation.ProductsPresentation;
@@ -60,22 +53,22 @@ public class ProductDetailsFragment extends BaseNavigationFragment implements Pr
 
     static class Views extends BaseViews {
 
-        @BindView(R.id.zeta_progress_bar)
+        @BindView(R2.id.zeta_progress_bar)
         ProgressBar progressBar;
 
-        @BindView(R.id.zeta_pdp_scroll_view)
+        @BindView(R2.id.zeta_pdp_scroll_view)
         ScrollView scrollContainer;
 
-        @BindView(R.id.zeta_pdp_image_view)
+        @BindView(R2.id.zeta_pdp_image_view)
         ImageView imageView;
 
-        @BindView(R.id.zeta_pdp_title)
+        @BindView(R2.id.zeta_pdp_title)
         TextView title;
 
-        @BindView(R.id.zeta_pdp_price)
+        @BindView(R2.id.zeta_pdp_price)
         TextView price;
 
-        @BindView(R.id.zeta_pdp_description)
+        @BindView(R2.id.zeta_pdp_description)
         TextView description;
 
         Views(View root) {
