@@ -19,7 +19,6 @@ buildscript {
         classpath gradlePlugins.frodoPlugin
         classpath gradlePlugins.lombokPlugin
         classpath gradlePlugins.retroLambdaPlugin
-        classpath gradlePlugins.butterKnifePlugin
         classpath gradlePlugins.androidToolsPlugin
         classpath gradlePlugins.gmsServicesPlugin
 

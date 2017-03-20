@@ -1,7 +1,8 @@
 apply plugin: 'me.tatarka.retrolambda'
 apply plugin: 'com.android.application'
 apply plugin: 'com.fernandocejas.frodo'
-apply plugin: 'com.jakewharton.butterknife'
+apply plugin: 'com.neenbedankt.android-apt'
+apply plugin: 'android-apt'
 
 android {
     compileSdkVersion versions.compileSdk
@@ -22,9 +23,9 @@ android {
 
     splits {
         abi {
-            enable false //project.hasProperty('splitApks')
+            enable true //project.hasProperty('splitApks')
             reset()
-            include 'x86', 'armeabi', 'armeabi-v7a', 'mips'
+            include 'x86', 'armeabi', 'armeabi-v7a'
             universalApk = true
         }
     }
@@ -143,7 +144,7 @@ dependencies {
 
     compile libraries.eventBus
     compile libraries.butterKnife
-    annotationProcessor libraries.butterKnifeCompiler
+    apt libraries.butterKnifeCompiler
 
     //IMAGE PROCESSING
     compile libraries.glide
@@ -174,9 +175,9 @@ dependencies {
     compile libraries.rxJava
     compile libraries.rxAndroid
     compile libraries.dagger
-    annotationProcessor libraries.daggerCompiler
+    apt libraries.daggerCompiler
     provided libraries.autoValue
-    annotationProcessor libraries.autoValueParcel
+    apt libraries.autoValueParcel
 
     //Zeta
     compile libraries.zetaUtils
