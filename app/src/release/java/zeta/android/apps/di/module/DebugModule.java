@@ -7,8 +7,8 @@ import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
 import zeta.android.apps.sharedPref.DebugSharedPreferences;
-import zeta.android.apps.tools.DeveloperToolsImpl;
 import zeta.android.apps.tools.DeveloperTools;
+import zeta.android.apps.tools.DeveloperToolsImpl;
 
 @Module
 @Singleton

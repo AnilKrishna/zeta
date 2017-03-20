@@ -7,8 +7,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.IntDef;
 import android.support.annotation.Nullable;
-import android.support.v4.content.ContextCompat;
 import android.support.customtabs.CustomTabsIntent;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,8 +23,6 @@ import zeta.android.apps.receiver.ActionBroadcastReceiver;
 import zeta.android.apps.ui.activity.WebViewActivity;
 import zeta.android.apps.ui.activity.navigation.INavigationFragmentManager;
 import zeta.android.apps.ui.activity.navigation.NavigationFragmentManager;
-
-import static java.security.AccessController.getContext;
 
 @ParametersAreNonnullByDefault
 public abstract class BaseNavigationFragment extends DaggerAwareFragment implements INavigationFragmentManager {

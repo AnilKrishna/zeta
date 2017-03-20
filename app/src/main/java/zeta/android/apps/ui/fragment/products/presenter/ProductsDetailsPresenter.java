@@ -11,9 +11,9 @@ import com.google.auto.value.AutoValue;
 import javax.annotation.ParametersAreNonnullByDefault;
 
 import zeta.android.apps.R;
-import zeta.android.apps.ui.common.ZetaRxFragmentLifeCyclePresenter;
 import zeta.android.apps.rx.providers.RxSchedulerProvider;
 import zeta.android.apps.rx.subscriber.ZetaSubscriber;
+import zeta.android.apps.ui.common.ZetaRxFragmentLifeCyclePresenter;
 import zeta.android.apps.ui.fragment.products.presentation.ProductsPresentation;
 import zeta.android.myntra.managers.ProductsManager;
 import zeta.android.myntra.managers.params.ProductDetailsParams;

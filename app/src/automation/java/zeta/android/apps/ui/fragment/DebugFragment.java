@@ -11,10 +11,10 @@ import javax.inject.Inject;
 
 import zeta.android.apps.R;
 import zeta.android.apps.di.component.ZetaAppComponent;
-import zeta.android.apps.ui.common.BaseViews;
-import zeta.android.apps.ui.fragment.common.BaseNavigationFragment;
 import zeta.android.apps.ui.activity.presentation.DebugPresentation;
 import zeta.android.apps.ui.activity.presenter.DebugPresenter;
+import zeta.android.apps.ui.common.BaseViews;
+import zeta.android.apps.ui.fragment.common.BaseNavigationFragment;
 
 @ParametersAreNonnullByDefault
 public class DebugFragment extends BaseNavigationFragment implements DebugPresentation {

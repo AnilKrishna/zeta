@@ -5,8 +5,6 @@ import android.support.annotation.Nullable;
 
 import com.google.auto.value.AutoValue;
 
-import zeta.android.apps.ui.fragment.accounts.presenter.AccountsPresenterParam;
-
 @AutoValue
 public abstract class HomePresenterParam implements Parcelable {
 

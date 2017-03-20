@@ -27,7 +27,6 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import zeta.android.apps.R;
-import zeta.android.apps.R2;
 import zeta.android.apps.di.component.ZetaAppComponent;
 import zeta.android.apps.ui.common.BaseViews;
 import zeta.android.apps.ui.fragment.common.BaseNavigationFragment;
@@ -53,22 +52,22 @@ public class ProductDetailsFragment extends BaseNavigationFragment implements Pr
 
     static class Views extends BaseViews {
 
-        @BindView(R2.id.zeta_progress_bar)
+        @BindView(R.id.zeta_progress_bar)
         ProgressBar progressBar;
 
-        @BindView(R2.id.zeta_pdp_scroll_view)
+        @BindView(R.id.zeta_pdp_scroll_view)
         ScrollView scrollContainer;
 
-        @BindView(R2.id.zeta_pdp_image_view)
+        @BindView(R.id.zeta_pdp_image_view)
         ImageView imageView;
 
-        @BindView(R2.id.zeta_pdp_title)
+        @BindView(R.id.zeta_pdp_title)
         TextView title;
 
-        @BindView(R2.id.zeta_pdp_price)
+        @BindView(R.id.zeta_pdp_price)
         TextView price;
 
-        @BindView(R2.id.zeta_pdp_description)
+        @BindView(R.id.zeta_pdp_description)
         TextView description;
 
         Views(View root) {

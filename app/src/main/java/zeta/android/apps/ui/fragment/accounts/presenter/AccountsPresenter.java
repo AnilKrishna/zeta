@@ -9,8 +9,8 @@ import com.google.auto.value.AutoValue;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 
-import zeta.android.apps.ui.common.ZetaRxFragmentLifeCyclePresenter;
 import zeta.android.apps.rx.providers.RxSchedulerProvider;
+import zeta.android.apps.ui.common.ZetaRxFragmentLifeCyclePresenter;
 import zeta.android.apps.ui.fragment.accounts.presentation.AccountsPresentation;
 
 @ParametersAreNonnullByDefault

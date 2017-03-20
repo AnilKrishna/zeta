@@ -2,8 +2,8 @@ package zeta.android.apps.tools;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 
-import zeta.android.apps.sharedPref.DebugSharedPreferences;
 import zeta.android.apps.ZetaApplication;
+import zeta.android.apps.sharedPref.DebugSharedPreferences;
 
 @ParametersAreNonnullByDefault
 public class DeveloperToolsImpl implements DeveloperTools {
