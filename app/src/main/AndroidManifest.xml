@@ -30,7 +30,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.activity.WebViewActivity"/>
+        <activity android:name=".ui.activity.WebViewActivity" />
 
         <!--
         <meta-data
@@ -38,10 +38,15 @@
             android:value="@integer/google_play_services_version" />
         -->
 
+        <!-- Glide -->
         <meta-data
             android:name="zeta.android.apps.appconfig.GlideConfigModule"
             android:value="GlideModule" />
 
+        <!-- Crashlytics -->
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="876b5dbc8537a7d1d910f32f20daa0f4ea976e02" />
 
     </application>
 

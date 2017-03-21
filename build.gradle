@@ -12,12 +12,14 @@ buildscript {
         jcenter()
 
         maven { url "https://jitpack.io" }
+        maven { url 'https://maven.fabric.io/public' }
     }
 
     dependencies {
         classpath gradlePlugins.aptPlugin
         classpath gradlePlugins.frodoPlugin
         classpath gradlePlugins.lombokPlugin
+        classpath gradlePlugins.fabricPlugin
         classpath gradlePlugins.retroLambdaPlugin
         classpath gradlePlugins.androidToolsPlugin
         classpath gradlePlugins.gmsServicesPlugin
@@ -35,6 +37,7 @@ allprojects {
         jcenter()
 
         maven { url "https://jitpack.io" }
+        maven { url 'https://maven.fabric.io/public' }
     }
 
     // Workaround to prevent Gradle from stealing focus from other apps during tests run/etc.
@@ -138,9 +141,9 @@ subprojects {
         def checkTask = tasks.findByName('check')
 
         //Disabled for now
-        //checkTask.dependsOn('pmd')
-        //checkTask.dependsOn('findbugs')
-        //checkTask.dependsOn('checkstyle')
+        checkTask.dependsOn('pmd')
+        checkTask.dependsOn('findbugs')
+        checkTask.dependsOn('checkstyle')
 
         // Log instrumentation tests results.
         tasks.withType(AndroidTestTask) { task ->
