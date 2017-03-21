@@ -35,14 +35,16 @@ android {
         automation.initWith(buildTypes.debug)
         automation {
             applicationIdSuffix ".automation"
-            minifyEnabled false
+            minifyEnabled true
+            useProguard false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
 
         debug {
             applicationIdSuffix ".debug"
-            minifyEnabled false
+            minifyEnabled true
             debuggable true
+            useProguard false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
 
@@ -50,6 +52,7 @@ android {
             minifyEnabled true
             zipAlignEnabled
             debuggable false
+            useProguard true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -69,7 +72,7 @@ android {
             versionCode 3
             versionName "1.0.3.2"
         }
-        
+
     }
 
     aaptOptions {
